@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <div id="app">
+      {{ message }}
+    </div>
+
+    <div id="app-2">
+      <span v-bind:title="title">
+        {{message}}
+      </span>
+    </div>
+
+    <div id="app-3">
+      <p v-if="seen">Maintenant vous me voyez</p>
+    </div>
+
+    <div id="app-4">
+      <ol>
+        <li v-for="todo in todos">
+          {{ todo.text }}
+        </li>
+      </ol>
+    </div>
+
+    <div id="app-5">
+      <p>{{message}}</p>
+      <button v-on:click="reverseMessage">Message inversé</button>
+    </div>
+
+    <div id="app-6">
+      <ol>
+        <li v-for="todo in todos">
+          {{ todo.text }}
+        </li>
+      </ol>
+      <input v-model="todos[0].text">
+      <input v-model="todos[1].text">
+
+      <p>{{message}}</p>
+      <input v-model="message">
+    </div>
+
+    <div id="app-7">
+      <ol>
+        <!--
+          Maintenant nous fournissons à chaque todo-item l'objet todo qu'il représente de manière à ce que son contenu puisse être dynamique.
+          Nous avons également besoin de fournir à chaque composant une « clé », mais nous expliquerons cela plus tard.
+        -->
+        <todo-item
+          v-for="item in groceryList"
+          v-bind:todo="item"
+          v-bind:key="item.id"
+        ></todo-item>
+      </ol>
+    </div>
+
+    <div id="app-8">
+        <button v-on:click="isVisible = !isVisible">Affiche moi ou enlève moi</button>
+        <p v-if="isVisible">Je suis visible</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="/index.js"></script>
+  </body>
+</html>
